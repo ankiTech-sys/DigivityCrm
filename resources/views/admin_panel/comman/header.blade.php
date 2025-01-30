@@ -38,6 +38,14 @@
                                 <a href="{{ route('admin.global-setting.school') }}"
                                     class="a nav-sub-link"><i data-feather="home"></i> Define School</a>
                             </li>
+                            <li class="nav-sub-item">
+                                <a href="{{ route('admin.global-setting.course') }}"
+                                    class="a nav-sub-link"><i data-feather="home"></i> Define Class/Course</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{{ route('admin.global-setting.map-school-withcourse') }}"
+                                    class="a nav-sub-link"><i data-feather="map"></i> Map School/Course</a>
+                            </li>
                         </ul>
                     </div>
                 </div><!-- nav-sub -->
