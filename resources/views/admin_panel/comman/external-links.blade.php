@@ -35,8 +35,7 @@
 
     <title>Digivity Olampiyad Certification</title>
     <!-- vendor css -->
-<link href="{{asset('../../alertify/alertify.css')}}" rel="stylesheet">
-<link href="{{asset('../../alertify/alerti.css')}}" rel="stylesheet">
+
 
     <script src="{{ asset('../../assets/lib/ionicons/ionicons/ionicons.esm.js') }}" type="module"></script>
     <script src="{{ asset('../../assets/lib/ionicons/ionicons/ionicons.esm.js') }}" type="module"></script>
@@ -52,7 +51,8 @@
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="{{ asset('../../assets/lib/jquery/jquery.min.js') }}"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- Include CKEditor 5 -->
     <script src="https://cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 
@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="{{ asset('../../assets/css/dashforge.auth.css') }}">
     <link rel="stylesheet" href="{{ asset('../../assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('../../assets/css/bootstrap-multiselect.css') }}">
+    <link href="{{asset('../../alertify/alertify.css')}}" rel="stylesheet">
+<link href="{{asset('../../alertify/alerti.css')}}" rel="stylesheet">
 </head>
 
 <body>

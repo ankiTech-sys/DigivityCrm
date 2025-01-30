@@ -18,9 +18,5 @@
             </div>
         </div>
     </div>
-
-   
-
-
 @endsection
 {{-- main content section start here --}}

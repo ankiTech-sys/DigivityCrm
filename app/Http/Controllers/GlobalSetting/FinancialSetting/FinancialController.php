@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\GlobalSetting\MasterSetting\Financial\FinancialYearRequest;
 use App\Models\GlobalSetting\Financial\MsterSetting\FinancialYearModel;
+use Illuminate\Support\Facades\Log;
 
 class FinancialController extends Controller
 {
@@ -14,7 +15,8 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.module.globalsetting.financial.Masteradmin.index');
+      $financialyear=FinancialYearModel::get();
+        return view('admin_panel.module.globalsetting.Masteradmin.financial_year',compact('financialyear'));
     }
 
     /**
@@ -31,8 +33,9 @@ class FinancialController extends Controller
  
         public function store(FinancialYearRequest $request)
         {
-            $newData=new FinancialYearModel();
-          if($newData->create($request->validated()))
+          $data=$request->validated();
+          $data['is_active'] = $request->is_active == 'on' ? 'yes' : 'no';
+          if(FinancialYearModel::create($data))
           {
             return back()->with(['success'=>'Financial Year Created Successfully Done']);
           }
@@ -60,7 +63,7 @@ class FinancialController extends Controller
     public function edit(string $id)
     {
         $financialyear=FinancialYearModel::find($id);
-        return back()->with($financialyear);
+        return view('admin_panel.module.globalsetting.Masteradmin.Edit.edit_financial_year',compact('financialyear'));
     }
 
     /**
@@ -69,7 +72,9 @@ class FinancialController extends Controller
     public function update(FinancialYearRequest $request, string $id)
     {
         $newData=FinancialYearModel::find($id);
-      if($newData->update($request->validated()))
+        $data=$request->validated();
+        $data['is_active']=$request->is_active == 'on' ? 'yes' : 'no';
+      if($newData->update($data))
       {
         return back()->with(['success'=>'Financial Year updated Successfully Done']);
       }
@@ -83,15 +88,4 @@ class FinancialController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        $result=FinancialYearModel::find($id)->delete();
-        if($result)
-        {
-            return response()->json(['success'=>'Financial Year Deleted Successfully Done']);
-        }
-        else{
-            return response()->json(['error'=>'Financial Not Year Deleted Successfully Done']);
-        }
-    }
 }

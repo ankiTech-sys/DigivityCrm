@@ -5,6 +5,7 @@
     });
     </script>
     
+    
 <header class="navbar navbar-header navbar-header-fixed">
     <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
@@ -29,8 +30,13 @@
                 <div class="navbar-menu-sub">
                     <div class="d-lg-flex">
                         <ul>
-                              <li class="nav-sub-item"><a href="{{ route('admin.global-setting.financialYear') }}"
+                              <li class="nav-sub-item">
+                                <a href="{{ route('admin.global-setting.financialYear') }}"
                                     class="a nav-sub-link"><i data-feather="settings"></i> Define Financial Year</a>
+                            </li>
+                            <li class="nav-sub-item">
+                                <a href="{{ route('admin.global-setting.school') }}"
+                                    class="a nav-sub-link"><i data-feather="home"></i> Define School</a>
                             </li>
                         </ul>
                     </div>

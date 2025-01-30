@@ -38,11 +38,9 @@ class AuthenticatedSessionController extends Controller
                 Auth::logout();
                 return redirect()->route('login')->withErrors(['blocked' => 'Your account is blocked. You cannot log in.']);
             }
-            
-            Session::put('user_palinpassword', Auth::user()->plain_password);
         
             $request->session()->regenerate();
-    
+            setActiveFinancialSession();
             return redirect()->route('dashboard');
         }
         return back()->withErrors(['email' => 'Invalid credentials.']);

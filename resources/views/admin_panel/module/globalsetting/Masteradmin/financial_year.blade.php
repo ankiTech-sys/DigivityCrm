@@ -2,6 +2,15 @@
 @extends('admin_panel.comman.masterLayout')
 <!-- exteinding master layout here -->
 
+<!-- model section start here -->
+@section('ModelTitle','Add New Financial Year')
+@section('ModelTitleInfo','Manage Financial Year')
+@section('EditModelTitle','Edit Financial Year')
+@section('EditModelTitleInfo','Manage Financial Year')
+@section('ModelSize', 'modal-lg')
+@section('AddModelPage')
+    @include('admin_panel.module.globalsetting.MasterAdmin.Add.add_financial')
+@endsection
 
 @section('main-content')
 {{-- main section start here --}}
@@ -26,16 +35,27 @@
             <table id="example2" class="table datatable table-bordered dataTable example2" >
                     <thead class="bg-light fw-bold">
                         <tr class="py-3">
+                            <th class="fw-bold">Sr. No.</th>
                             <th class="fw-bold">Financial Year</th>
                             <th class="fw-bold">Start Date</th>
                             <th class="fw-bold">End Date</th>
                             <th class="fw-bold">Is-Active</th>
-                            <th class="fw-bold">Action</th>
-                            <th class="fw-bold">Action</th>
-                            <th class="fw-bold">Action</th>
+                         
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        @foreach($financialyear as $fyear)
+                        <tr editurl="{{route('admin.global-setting.edit.financialYear',$fyear->id)}}" deleteurl="{{ route('RecordDelete', ['id' => $fyear->id, 'table_name' => 'financial_year']) }}">
+                            <td>{{$loop->iteration ?? ''}}</td>
+                            <td>{{$fyear->financial_session ?? ''}}</td>
+                            <td>{{$fyear->start_date ?? ''}}</td>
+                            <td>{{$fyear->end_date ?? ''}}</td>
+                            <td class="text-center">{!! $fyear->is_active == 'yes' ? '<span class="badge text-bg-success">Active</span>
+                                ' : '<span class="badge text-bg-danger">In-Active</span>'
+                                !!}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                       </table>
             </div>
         </div>
@@ -46,7 +66,5 @@
 
 
 </div>
-
 {{-- table section satrt here --}}
-
 @endsection

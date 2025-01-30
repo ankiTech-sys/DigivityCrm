@@ -107,3 +107,6 @@
 .nowrap{
     white-space: nowrap !important;
 }
+.tr_active{
+    background-color: #f3f4f7 !important;
+}
