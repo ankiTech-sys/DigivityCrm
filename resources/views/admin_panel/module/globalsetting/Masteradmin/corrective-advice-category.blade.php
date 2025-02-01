@@ -3,13 +3,13 @@
 <!-- exteinding master layout here -->
 
 <!-- model section start here -->
-@section('ModelTitle','Add New School')
-@section('ModelTitleInfo','Manage Education School')
-@section('EditModelTitle','Edit School ')
-@section('EditModelTitleInfo','Manage Education School')
-@section('ModelSize', 'modal-xl')
+@section('ModelTitle','Add New Corrective Adivce Category')
+@section('ModelTitleInfo','Manage Certificate Setting')
+@section('EditModelTitle','Edit Corrective Adivce Category')
+@section('EditModelTitleInfo','Manage Certificate Setting')
+@section('ModelSize', 'modal-lg')
 @section('AddModelPage')
-    @include('admin_panel.module.globalsetting.Masteradmin.Add.add_school')
+    @include('admin_panel.module.globalsetting.Masteradmin.Add.add-corrective-advice')
 @endsection
 
 @section('main-content')
@@ -28,8 +28,9 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Global Setting</li>
-        <li class="breadcrumb-item active" aria-current="page">School</li>
+        <li class="breadcrumb-item" aria-current="page">Global Setting</li>
+        <li class="breadcrumb-item" aria-current="page">Certificate Setting</li>
+        <li class="breadcrumb-item active" aria-current="page">Corrective-Advice-Category</li>
     </ol>
 </nav>
 
@@ -55,22 +56,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @if(isset($schoolinformation))
-                      @foreach($schoolinformation as $school)
-                      <tr editUrl="{{route('admin.global-setting.edit.school',$school->id)}}"  deleteurl="{{ route('RecordDelete', ['id' => $school->id, 'table_name' => 'school_information']) }}">
-                        <td>{{$loop->iteration ?? ''}}</td>
-                        <td>{{$school->school_name ?? ''}}</td>
-                        <td>{{$school->print_certificate_school_name ?? ''}}</td>
-                        <td>{{$school->phone_no ?? ''}}</td>
-                        <td>{{$school->email ?? ''}}</td>
-                        <td>{{$school->no_of_student ?? ''}}</td>
-                        <td>{{$school->principle_name ?? ''}}</td>
-                        <td class="text-center">{!! $school->is_active == 'yes' ? '<span class="badge text-bg-success">Active</span>
-                                ' : '<span class="badge text-bg-danger">In-Active</span>'
-                                !!}</td>
-                      </tr>
-                      @endforeach
-                      @endif
+                   
                     </tbody>
                       </table>
             </div>

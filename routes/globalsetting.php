@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GlobalSetting\FinancialSetting\FinancialController;
@@ -7,6 +6,7 @@ use App\Http\Controllers\GlobalSetting\DeleteRecord;
 use App\Http\Controllers\GlobalSetting\School\CourseController;
 use App\Http\Controllers\GlobalSetting\School\MapSchoolWithCourse;
 use App\Http\Controllers\GlobalSetting\School\SchoolController;
+use App\Http\Controllers\GlobalSetting\Certificate\CorrectiveAdviceCategory;
 
 Route::prefix('GlobalSetting/MasterAdmin/financial-year')->group(function() {
     Route::get('index', [FinancialController::class, 'index'])->name('admin.global-setting.financialYear');
@@ -41,3 +41,14 @@ Route::prefix('GlobalSetting/MasterAdmin/map-school-with-courses')->group(functi
 
 // Delete Record Url
 Route::get('RecordDelete/{id}/{table_name}/delete',[DeleteRecord::class,'DeleteRecord'])->name('RecordDelete');
+
+
+// Certificate Setting Start here
+
+// correctie advice categoryu
+Route::prefix('GlobalSetting/MasterAdmin/Cattective-advice/Category')->group(function() {
+    Route::get('index', [CorrectiveAdviceCategory::class, 'index'])->name('admin.global-setting.corrective-advice.category');
+    Route::post('create', [CorrectiveAdviceCategory::class, 'store'])->name('admin.global-setting.create.corrective-advice.category');
+    Route::get('admin/global-setting/edit/school/{id}',[SchoolController::class,'edit'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
+    Route::put('admin/global-setting/edit/school/{id}',[SchoolController::class,'update'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
+})->middleware(['auth', 'verified']);

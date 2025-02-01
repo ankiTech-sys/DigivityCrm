@@ -25,8 +25,13 @@ class CreateSchool extends FormRequest
             'school_name' => 'required|string|max:255',
             'school_address' => 'required|string|max:255',
             'about_school' => 'nullable|string',
-            'contact_no' => 'nullable|min:10|max:15',
+            'phone_no' => 'nullable|min:10|max:15',
             'email' => 'nullable|email',
+            'print_certificate_school_name'=>'required|string',
+            'no_of_student'=>'nullable',
+            'principle_name'=>'nullable',
+            'principle_mobile_no'=>'nullable',
+            'principle_email'=>'nullable',
             'logo' => 'nullable|mimes:jpeg,png|max:5000',
         ];
     }

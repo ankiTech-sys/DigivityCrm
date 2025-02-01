@@ -27,7 +27,7 @@ alert('{{ $error }}');
     <div class="panel panel-default">
         <div class="panel-heading"><b><i class="fa fa-list"></i> School</b></div>
         <div class="panel-body pd-b-0 row">
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-4 mx-auto">
                 <label for="" class="form-label">Select School <span class="text-danger">*</span></label>
                 <select name="" class="select2 form-select" id="">
                     @foreach($schools as $school)
@@ -37,11 +37,11 @@ alert('{{ $error }}');
                     @endforeach
                 </select>
             </div>
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-8 mx-auto">
                 <div class="row">
                     <label for="" class="form-label">Please Select Courses <span class="text-danger">*</span></label>
                     @foreach($courses as $course)
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="input-group mb-3">
                             <div class="input-group-text" style="background-color: #caeadb;">
                                 <input class="form-check-input mt-0" name="courses[]" {{$loop->iteration == 1 ? 'required' : ''}} type="checkbox" value="{{$course->id ?? ''}}" aria-label="Checkbox for following text input">

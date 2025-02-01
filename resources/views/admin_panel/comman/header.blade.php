@@ -30,6 +30,7 @@
                 <div class="navbar-menu-sub">
                     <div class="d-lg-flex">
                         <ul>
+                        <li class="nav-label">Global Setting</li>
                               <li class="nav-sub-item">
                                 <a href="{{ route('admin.global-setting.financialYear') }}"
                                     class="a nav-sub-link"><i data-feather="settings"></i> Define Financial Year</a>
@@ -47,8 +48,17 @@
                                     class="a nav-sub-link"><i data-feather="map"></i> Map School/Course</a>
                             </li>
                         </ul>
+                        <ul>
+                  <li class="nav-label">Certificate Setting</li>
+                  <li class="nav-sub-item">
+                    <a href="{{route('admin.global-setting.corrective-advice.category')}}" class="nav-sub-link"><i data-feather="award"></i>Corrective Advice Category</a></li>
+                  <li class="nav-sub-item"><a href="template/classic/page-500.html" class="nav-sub-link"><i data-feather="file"></i> 500 Internal Server</a></li>
+                  <li class="nav-sub-item"><a href="template/classic/page-503.html" class="nav-sub-link"><i data-feather="file"></i> 503 Service Unavailable</a></li>
+                  <li class="nav-sub-item"><a href="template/classic/page-505.html" class="nav-sub-link"><i data-feather="file"></i> 505 Forbidden</a></li>
+            </ul>
                     </div>
                 </div><!-- nav-sub -->
+                
             </li>
             <li hidden class="nav-item"><a href="../../components/" class="nav-link"><i data-feather="box"></i>
                     Components</a></li>

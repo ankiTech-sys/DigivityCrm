@@ -15,9 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('school_name');
             $table->text('school_address');
-            $table->text('about_school')->nullable();
-            $table->string('contact_no')->nullable();
+            $table->text('print_certificate_school_name');
+            $table->string('phone_no')->nullable();
+            $table->string('no_of_student')->nullable();
             $table->string('email')->nullable();
+            $table->string('principle_name')->nullable();
+            $table->string('principle_mobile_no')->nullable();
+            $table->string('principle_email')->nullable();
+            $table->text('about_school')->nullable();
             $table->string('logo')->nullable();
             $table->unsignedInteger('financial_year');
             $table->unsignedInteger('user_id');
