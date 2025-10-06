@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\GlobalSetting\FinancialSetting\UpdateFinancialYear;
+use App\Http\Controllers\PrefixSettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GlobalSetting\FinancialSetting\FinancialController;
@@ -15,40 +18,20 @@ Route::prefix('GlobalSetting/MasterAdmin/financial-year')->group(function() {
     Route::put('admin/global-setting/edit/financialYear/{id}',[FinancialController::class,'update'])->name('admin.global-setting.edit.financialYear')->middleware(['auth','verified']);
 })->middleware(['auth', 'verified']);
 
+// Session Update
+Route::post('admin/global-setting/update/financialYear/',[UpdateFinancialYear::class,'updateSession'])->name('financialYear.update')->middleware(['auth','verified']);
 
-Route::prefix('GlobalSetting/MasterAdmin/school')->group(function() {
-    Route::get('index', [SchoolController::class, 'index'])->name('admin.global-setting.school');
-    Route::post('create', [SchoolController::class, 'store'])->name('admin.global-setting.create-school');
-    Route::get('admin/global-setting/edit/school/{id}',[SchoolController::class,'edit'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
-    Route::put('admin/global-setting/edit/school/{id}',[SchoolController::class,'update'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
+Route::prefix('GlobalSetting/MasterAdmin/Categories')->group(function() {
+    Route::get('index', [CourseController::class, 'index'])->name('admin.global-setting.service-category');
+    Route::post('create', [CourseController::class, 'store'])->name('admin.global-setting.create-service-category');
+    Route::get('admin/global-setting/edit/category/{id}',[CourseController::class,'edit'])->name('admin.global-setting.edit.service_category')->middleware(['auth','verified']);
+    Route::put('admin/global-setting/edit/category/{id}',[CourseController::class,'update'])->name('admin.global-setting.edit.service_category')->middleware(['auth','verified']);
 })->middleware(['auth', 'verified']);
 
 
-
-Route::prefix('GlobalSetting/MasterAdmin/courses')->group(function() {
-    Route::get('index', [CourseController::class, 'index'])->name('admin.global-setting.course');
-    Route::post('create', [CourseController::class, 'store'])->name('admin.global-setting.create-course');
-    Route::get('admin/global-setting/edit/course/{id}',[CourseController::class,'edit'])->name('admin.global-setting.edit.course')->middleware(['auth','verified']);
-    Route::put('admin/global-setting/edit/course/{id}',[CourseController::class,'update'])->name('admin.global-setting.edit.course')->middleware(['auth','verified']);
-})->middleware(['auth', 'verified']);
-
-
-Route::prefix('GlobalSetting/MasterAdmin/map-school-with-courses')->group(function() {
-    Route::get('index', [MapSchoolWithCourse::class, 'index'])->name('admin.global-setting.map-school-withcourse');
-    Route::post('create', [MapSchoolWithCourse::class, 'store'])->name('admin.global-setting.map-school-create-withcourse');
-})->middleware(['auth', 'verified']);
 
 
 // Delete Record Url
 Route::get('RecordDelete/{id}/{table_name}/delete',[DeleteRecord::class,'DeleteRecord'])->name('RecordDelete');
 
 
-// Certificate Setting Start here
-
-// correctie advice categoryu
-Route::prefix('GlobalSetting/MasterAdmin/Cattective-advice/Category')->group(function() {
-    Route::get('index', [CorrectiveAdviceCategory::class, 'index'])->name('admin.global-setting.corrective-advice.category');
-    Route::post('create', [CorrectiveAdviceCategory::class, 'store'])->name('admin.global-setting.create.corrective-advice.category');
-    Route::get('admin/global-setting/edit/school/{id}',[SchoolController::class,'edit'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
-    Route::put('admin/global-setting/edit/school/{id}',[SchoolController::class,'update'])->name('admin.global-setting.edit.school')->middleware(['auth','verified']);
-})->middleware(['auth', 'verified']);

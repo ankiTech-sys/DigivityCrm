@@ -51,14 +51,14 @@
         <div class="loginContainer media align-items-stretch justify-content-center ht-100p pos-relative">
             <div class="media-body align-items-center d-none d-lg-flex">
                 <div class="mx-wd-100 border">
-                    <img src="{{ asset('assets/newimage/lalji.png') }}" class="img-fluid" alt="">
+                    <img src="{{ asset('assets/newimage/mainlogo.png') }}" class="img-fluid" alt="">
                 </div>
             </div>
             <div class="divider-text divider-vertical "></div>
             <div class="sign-wrapper mg-lg-l-20 mg-xl-l-20 animated bounce">
                 <div class="wd-100p">
                     <div class="class mb-4 d-flex fw-bold">
-                        <span class="fs-3">Intellectual Property Service</span>
+                        <span class="fs-3">Comprehensive CRM for Digivity Technology growth. 🚀</span>
                     </div>
                     <h3 class="tx-color-01 mg-b-5">Sign In</h3>
                     <p class="tx-color-03 tx-16 mg-b-3 fs-10">Welcome back! Please sign in to continue.</p>

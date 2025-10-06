@@ -8,12 +8,12 @@ use App\Models\Record;
 class CourseModel extends Record
 {
     use SoftDeletes;
-    protected $table = "courses";
+    protected $table = "service_category";
     protected $fillable=[
         'sequence',
-        'course_name',
-        'course_code',
-        'course_full_name',
+        'category_name',
+        'category_code',
+        'description',
         'user_id',
         'is_active'
     ];

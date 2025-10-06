@@ -11,8 +11,14 @@ class CommanRepository extends RepositoryContract
     public function getAllSchool(){
         return SchoolInformation::where('is_active','yes')->get();
     }
+    public function getAllSchools(){
+        return SchoolInformation::all();
+    }
     public function getAllCourse(){
         return CourseModel::where('is_active','yes')->get();
+    }
+    public function getAllCourses(){
+        return CourseModel::all();
     }
 }
 

@@ -1,8 +1,9 @@
 {{-- session changed modal start hewe --}}
-
+<!-- <footer style="background-color: black; color: white; text-align: center; padding: 10px 0; width: 103%;margin-left:-24px;overflow-y:hidden;margin-bottom:-50px">
+    <p>&copy; 2025 Digivity Technology. All rights reserved.</p>
+</footer> -->
 <!-- Button trigger modal -->
 </div>
-
 
 
 {{-- edit status modal end here --}}
@@ -14,25 +15,77 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Financial Year</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-          
-            <form id="updateSession" method="POST">
-              @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="" class="from-label fw-bold">Financial Year</label>
-                        <select name="financial_id" class="form-select" id="">
-                       
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Change Session</button>
-                </div>
-            </form>
+            @php
+    use App\Models\GlobalSetting\MsterSetting\Financial\FinancialYearModel;
+    $years = FinancialYearModel::all();
+@endphp
+
+<form id="updateSession" method="POST">
+    @csrf
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="financial_id" class="from-label fw-bold">Financial Year</label>
+            <select name="financial_id" class="form-select" id="financial_id">
+                <option value="">**Select Financial Year</option>
+                @foreach ($years as $year)
+                    <option value="{{ $year->id }}" {{ $year->is_active === 'yes' ? 'selected' : '' }}>
+                        {{ $year->financial_session }}
+                    </option>
+                @endforeach
+            </select>
         </div>
     </div>
-</div>
-{{-- session changed modla end here --}}
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Change Session</button>
+    </div>
+</form>
+
+{{-- Update Financial Session --}}
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#updateSession').on('submit', function (e) {
+        e.preventDefault();
+        let formData = $(this).serialize();
+        let route = "{{ route('financialYear.update') }}";
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // Ensure CSRF token is fetched correctly
+            },
+            url: route,
+            type: "POST",
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.success
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.reload(); // Corrected the reload method
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.error || 'An unexpected error occurred.'
+                    });
+                }
+            },
+            error: function (xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: xhr.responseJSON?.message || 'Failed to update financial session.'
+                });
+            }
+        });
+    });
+});
+</script>
+
 
 {{-- logout script section start here --}}
 <script class="text/javascript">

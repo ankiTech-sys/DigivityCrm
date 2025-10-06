@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\GlobalSetting\School;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GlobalSetting\MasterSetting\ServiceCategoryRequest;
 use App\Models\GlobalSetting\CourseModel;
 use Illuminate\Http\Request;
-use App\Http\Requests\GlobalSetting\MasterSetting\CourseRequest;
 
 class CourseController extends Controller
 {
@@ -14,8 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses=CourseModel::get();
-        return view('admin_panel.module.globalsetting.MasterAdmin.courses',compact('courses'));
+        $categorys=CourseModel::get();
+        return view('admin_panel.module.globalsetting.MasterAdmin.service_category',compact('categorys'));
     }
 
     /**
@@ -29,15 +29,18 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CourseRequest $request)
+    public function store(ServiceCategoryRequest $request)
     {
-        $coursedata=$request->validated();
-        $coursedata['is_active'] = $request->is_active == 'on' ? 'yes' : 'no';
-        if(CourseModel::create($coursedata)){
-            return back()->with(['success'=>'Course Record Saved Successfully !']);
+        // dd($request->all());
+        $categorydata=$request->validated();
+        // dd($categorydata);
+        $categorydata['is_active'] = $request->is_active == 'on' ? 'yes' : 'no';
+        // dd($coursedata);
+        if(CourseModel::create($categorydata)){
+            return back()->with(['success'=>'Service Category Record Saved Successfully !']);
         }
         else{
-            return back()->with(['error'=>'Course Record Not Saved Successfully !']);
+            return back()->with(['error'=>'Service Category Record Not Saved Successfully !']);
         }
     }
 
@@ -54,23 +57,29 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        $course=CourseModel::find($id);
-        return view('admin_panel.module.globalsetting.MasterAdmin.Edit.edit_course',compact('course'));
+        // dd($id);
+        $cate=CourseModel::find($id);
+        
+        return view('admin_panel.module.globalsetting.MasterAdmin.Edit.edit_service_category',compact('cate'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(CourseRequest $request, string $id)
+    public function update(ServiceCategoryRequest $request, string $id)
     {
-        $coursedata=$request->validated();
-        $course=CourseModel::find($id);
-        $coursedata['is_active'] = $request->is_active == 'on' ? 'yes' : 'no';
-        if($course->update($coursedata)){
-            return back()->with(['success'=>'Course Record Updated Successfully !']);
+        // dd($request->all());
+        $categorydata=$request->validated();
+        // dd($categorydata);
+        $category=CourseModel::find($id);
+        // dd($category);
+        $categorydata['is_active'] = $request->is_active == 'on' ? 'yes' : 'no';
+        // dd($categorydata);
+        if($category->update($categorydata)){
+            return back()->with(['success'=>'Service Category Record Updated Successfully !']);
         }
         else{
-            return back()->with(['error'=>'Course Record Not Updated Successfully !']);
+            return back()->with(['error'=>'Service Category Record Not Updated Successfully !']);
         }
     }
 

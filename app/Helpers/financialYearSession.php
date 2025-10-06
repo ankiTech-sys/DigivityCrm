@@ -1,5 +1,5 @@
 <?php
-use App\Models\GlobalSetting\Financial\MsterSetting\FinancialYearModel;
+use App\Models\GlobalSetting\MsterSetting\Financial\FinancialYearModel;
 use Illuminate\Support\Facades\Session;
 
 

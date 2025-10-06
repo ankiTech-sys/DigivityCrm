@@ -1,13 +1,11 @@
 <?php
-
 namespace App\Http\Controllers\GlobalSetting\FinancialSetting;
-
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\GlobalSetting\MasterSetting\Financial\FinancialYearRequest;
-use App\Models\GlobalSetting\Financial\MsterSetting\FinancialYearModel;
-use Illuminate\Support\Facades\Log;
-
+use App\Models\GlobalSetting\MsterSetting\Financial\FinancialYearModel;
+use Dotenv\Validator;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Session;
 class FinancialController extends Controller
 {
     /**
@@ -85,7 +83,37 @@ class FinancialController extends Controller
       }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function updateSession(Request $request)
+    {
+        // Validate request
+        $data = Validator::make($request->all(), [
+            'financial_id' => 'required|exists:financial_year,id'
+        ]);
+    
+        
+        if ($data->fails()) {
+            return response()->json([
+                'error' => $data->errors()
+            ], 422);
+        }
+    
+        // Retrieve current session ID
+        $currentSessionId = Session::get('id');
+    
+        // Find the current session and deactivate it
+        $currentSession = FinancialYearModel::findOrFail($currentSessionId);
+        $currentSession->is_active = 'no';
+        $currentSession->save();
+    
+       
+        // Find the new session and activate it
+        $newSession = FinancialYearModel::findOrFail($request->financial_id); // Use the validated financial_year
+        $newSession->is_active = 'yes';
+        $newSession->save();
+    
+        // Set the new active academic session in the session
+        setActiveFinancialSession();
+    
+        return response()->json(['success' => 'Session updated successfully']);
+    }   
 }

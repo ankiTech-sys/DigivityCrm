@@ -3,28 +3,94 @@
         setInterval(updateClock, 1000);
         updateClock();
     });
+    function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+        document.getElementById('clock').innerHTML = strTime;
+    }
     </script>
-    
-    
+@php
+    if (Auth::user() === null) {
+        header("Location: " . route('login'));
+        exit;
+    }
+@endphp
+
 <header class="navbar navbar-header navbar-header-fixed">
     <a href="" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-        <img src="{{ asset('assets/newimage/main-logo.png') }}" style="height:50px;width:auto;" alt="">
+        <img src="https://digivity.in/assets/img/digivity-logo.png" style="height:50px;width:auto;" alt="">
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
         <div class="navbar-menu-header">
-            <img src="{{ asset('assets/newimage/main-logo.png') }}" alt="">
+            <img src="https://digivity.in/assets/img/digivity-logo.png" alt="">
             <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
         </div><!-- navbar-menu-header -->
         <ul class="nav navbar-menu">
             <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
             <li class="nav-item active"><a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a></li>
             <li class="nav-item with-sub">
-                <a href="" class="nav-link"><i data-feather="package"></i> Module</a>
+    <a href="Javascript:void(0)" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package">
+            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg> 
+        Module
+    </a>
 
-                <div class="navbar-menu-sub mx-wd-400">
-                  </div>
-            </li>
+    <div class="navbar-menu-sub mx-wd-400">
+        <div class="row m-0 p-0">
+            <a href="{{ route('admin.module.index') }}" class="col-lg-12 m-0 p-0 bd-1">
+                <ul>
+                    <li class="list-group-item d-flex align-items-center bd-0">
+                        <div class="mg-r-15 p-2 rounded-10 bg-light">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTegXcqy7WeCj00_Jhycxj_Ow5psZMsioAqQNh3OL0jqfNdyKllr4e3Sd0a6F2wvAsV7x0&usqp=CAU" style="object-fit:cover;" class="wd-40">
+                        </div>
+                        <div>
+                            <h6 class="tx-14 tx-inverse font-weight-normal tx-semibold mg-b-0">
+                                Customer/Billing
+                            </h6>
+                            <span class="d-block tx-10 text-muted" style="line-height:1.2; margin-top:3px;">
+                                Streamlined invoicing and customer management for Digivity Technology's business growth.
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        </div>
+
+         <div class="row m-0 p-0">
+            <a href="#" class="col-lg-12 m-0 p-0 bd-1">
+                <ul>
+                    <li class="list-group-item d-flex align-items-center bd-0">
+                        <div class="mg-r-15 p-2 rounded-10 bg-light">
+                            <img src="https://w7.pngwing.com/pngs/684/527/png-transparent-invoice-computer-icons-tax-finance-bank-text-logo-payment.png" class="wd-30">
+                        </div>
+                        <div>
+                            <h6 class="tx-14 tx-inverse font-weight-normal tx-semibold mg-b-0">
+                                Quatation Management
+                            </h6>
+                            <span class="d-block tx-10 text-muted" style="line-height:1.2; margin-top:3px;">
+                                Streamlined invoicing and customer management for Quatation
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</li>
+
             <li class="nav-item with-sub">
                 <a href="" class="nav-link"><i data-feather="layers"></i> Global Settings</a>
                 <div class="navbar-menu-sub">
@@ -35,24 +101,16 @@
                                 <a href="{{ route('admin.global-setting.financialYear') }}"
                                     class="a nav-sub-link"><i data-feather="settings"></i> Define Financial Year</a>
                             </li>
+                         
                             <li class="nav-sub-item">
-                                <a href="{{ route('admin.global-setting.school') }}"
-                                    class="a nav-sub-link"><i data-feather="home"></i> Define School</a>
+                                <a href="{{ route('admin.global-setting.service-category') }}"
+                                    class="a nav-sub-link"><i data-feather="home"></i> Define Service Category</a>
                             </li>
-                            <li class="nav-sub-item">
-                                <a href="{{ route('admin.global-setting.course') }}"
-                                    class="a nav-sub-link"><i data-feather="home"></i> Define Class/Course</a>
-                            </li>
-                            <li class="nav-sub-item">
-                                <a href="{{ route('admin.global-setting.map-school-withcourse') }}"
-                                    class="a nav-sub-link"><i data-feather="map"></i> Map School/Course</a>
-                            </li>
+                         
                         </ul>
                         <ul>
                   <li class="nav-label">Certificate Setting</li>
-                  <li class="nav-sub-item">
-                    <a href="{{route('admin.global-setting.corrective-advice.category')}}" class="nav-sub-link"><i data-feather="award"></i>Corrective Advice Category</a></li>
-                  <li class="nav-sub-item"><a href="template/classic/page-500.html" class="nav-sub-link"><i data-feather="file"></i> 500 Internal Server</a></li>
+               
                   <li class="nav-sub-item"><a href="template/classic/page-503.html" class="nav-sub-link"><i data-feather="file"></i> 503 Service Unavailable</a></li>
                   <li class="nav-sub-item"><a href="template/classic/page-505.html" class="nav-sub-link"><i data-feather="file"></i> 505 Forbidden</a></li>
             </ul>
@@ -87,6 +145,7 @@
             <a href="" role="button"  class="text-center  dropdown-link" data-bs-toggle="dropdown"
                 data-bs-display="static">
                 <div class="avatar avatar-sm">
+                  
                     <img src="{{ Auth::user()->user_image ? asset('storage/uploads/admins_images/'.Auth::user()->user_image) : asset('assets/newimage/user.png') }}" class="rounded-circle" alt="">
                 </div>
                 <span class="tx-semibold d-none d-md-block fw-bold text-dark fs-10 m-1 nowrap  mg-b-5">{{ Auth::user()->name ? Auth::user()->name : '' }}</span>
