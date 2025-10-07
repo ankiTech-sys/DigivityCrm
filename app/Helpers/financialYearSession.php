@@ -20,3 +20,14 @@ if (!function_exists('setActiveAcademicSession')) {
         }
     }
 }
+
+
+if (!function_exists('nowdate')) {
+    function nowdate($date, $format)
+    {
+        if (!$format) {
+            $format = "Y-m-d";
+        }
+        return \Carbon\Carbon::createFromDate($date)->format($format);
+    }
+}

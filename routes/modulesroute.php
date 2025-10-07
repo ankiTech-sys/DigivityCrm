@@ -8,6 +8,9 @@ use App\Http\Controllers\CustomerInvoice\IndexController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\LeadManagementController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\ImportClientsController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\LeadStatusController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\CompanyController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\ClientRegistrationController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\ClientTypeController;
 
 
 Route::prefix('Admin/customer-billing')->group(function () {
@@ -71,5 +74,26 @@ Route::prefix('Admin/LeadManagement/')->group(function () {
     Route::post("CreateLeadStatus",[LeadStatusController::class,'store'])->name("create-lead-status");
     Route::get("EditViewLeadStatus/{id}",[LeadStatusController::class,'edit'])->name("edit-lead-status");
     Route::put("UpdateLeadStatus/{id}",[LeadStatusController::class,'update'])->name("update-lead-status");
-})->middleware(['auth', 'verified']);;
+
+
+    // Define Company Section Start Here
+    Route::get("Company",[CompanyController::class,'index'])->name("define-companys");
+    Route::post("CreateCompany",[CompanyController::class,'store'])->name("create-company");
+    Route::get("EditViewCompany/{id}",[CompanyController::class,'edit'])->name("edit-company");
+    Route::put("UpdateCompany/{id}",[CompanyController::class,'update'])->name("update-company");
+
+
+    // Define Client Type Section Start Here
+    Route::get("ClientTypes",[ClientTypeController::class,'index'])->name("define-client-types");
+    Route::post("CreateClientType",[ClientTypeController::class,'store'])->name("create-client-type");
+    Route::get("EditViewClientType/{id}",[ClientTypeController::class,'edit'])->name("edit-client-type");
+    Route::put("UpdateClientType/{id}",[ClientTypeController::class,'update'])->name("update-client-type");
+
+
+    // Lead Management Client Registration Section Start Here
+    Route::get("ClientRegistration",[ClientRegistrationController::class,'index'])->name("leadmanagement-client-registration");
+    Route::post("CreateClientRegistration",[ClientRegistrationController::class,'store'])->name("leadmanagement-create-client-registration");
+
+
+})->middleware(['auth', 'verified']);
 ?>

@@ -1,23 +1,24 @@
-<form action="{{ route('create-lead-status') }}" method="POST">
+<form action="{{ route('update-company', $company->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <fieldset class="form-fieldset m-3  px-3">
         <legend>Information</legend>
         <div class="gorm-group ">
-            <label for="" class="form-label">Lead Status <span class="text-danger">*</span></label>
-            <input type="text" name="name" value="{{ old('lead_status') }}" autocomplete="off"
-                class="form-control input-sm" required placeholder="Enter Lead Status ..">
+            <label for="" class="form-label">Company Name <span class="text-danger">*</span></label>
+            <input type="text" name="company_name" value="{{ $company->company_name ?? '' }}" autocomplete="off"
+                class="form-control input-sm" required placeholder="Enter Company Name ..">
         </div>
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="" class="form-label">Lead Status Description <span
+                <label for="" class="form-label">Address <span
                         class="text-secondary">(optional)</span></label>
-                <textarea class="form-control" placeholder="Enter Lead Description..." value="{{ old("description") }}" name="description"></textarea>
+                <textarea class="form-control" placeholder="Enter Address..." name="address">{{ $company->address ?? '' }}</textarea>
             </div>
             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Status<span class="text-danger">*</span></label>
                 <select class="form-select" name="status">
-                    <option value="yes">Active</option>
-                    <option value="no">Inactive</option>
+                    <option value="yes" {{ $company->status == 'yes' ? 'selected' : '' }}>Active</option>
+                    <option value="no" {{ $company->status == 'no' ? 'selected' : '' }}>Inactive</option>
                 </select>
             </div>
 
@@ -28,7 +29,7 @@
     <div class="modal-footer bg-light">
 
         <button type="submit" class="btn btn-primary btn-icon px-2">
-            <i class="fa fa-plus"></i> Create
+            <i class="fa fa-plus"></i> Update
         </button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             <i class="fa fa-times"></i> Cancel

@@ -76,6 +76,15 @@
     <link rel="stylesheet" href="{{ asset('../../assets/css/bootstrap-multiselect.css') }}">
     <link href="{{asset('../../alertify/alertify.css')}}" rel="stylesheet">
 <link href="{{asset('../../alertify/alerti.css')}}" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/material_green.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+
+
 <style>
     @keyframes rotateBottom {
   from {
@@ -147,15 +156,16 @@
 </head>
 
 <body>
-
-    <script type="text/javascript">
-        $(function() {
-            $(".datepicker").datepicker({
-                showAnim: "slideDown", // Animation type
-                dateFormat: "yy-mm-dd", // Format of the date
-                changeMonth: true, // Enable month dropdown
-                changeYear: true, // Enable year dropdown
-                showButtonPanel: true // Show "Today" and "Done" buttons
-            });
-        });
-    </script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Flatpickr
+    flatpickr(".datepicker", {
+        dateFormat: "d-m-Y",   // backend format
+        altInput: true,        // nice formatted display
+        altFormat: "d-m-Y",   // e.g., October 7, 2025
+        allowInput: true,      // user can type manually
+        defaultDate: "today",  // ✅ auto-select today's date
+        clickOpens: true       // ✅ opens picker when clicked
+    });
+});
+</script>

@@ -15,10 +15,16 @@
 @section('main-content')
 {{-- main section start here --}}
 
+
+    {{-- main section start here --}}
+    @include('admin_panel.module.customerinvoice.sub-navbar.leadmanagement-navbar')
+    {{-- main section end here --}}
+
+
 {{-- table section satrt here --}}
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+    <ol class="breadcrumb breadcrumb-style1">
+        <li class="breadcrumb-item "><a href="{{ route('dashboard') }}">Dashboard</a></li>
         <li class="breadcrumb-item active" aria-current="page">Lead Management</li>
         <li class="breadcrumb-item active" aria-current="page">Mastersetting</li>
         <li class="breadcrumb-item active" aria-current="page">Lead Status</li>

@@ -1,17 +1,12 @@
-<form action="{{ route('create-lead-status') }}" method="POST">
+<form action="{{ route('create-client-type') }}" method="POST">
     @csrf
     <fieldset class="form-fieldset m-3  px-3">
-        <legend>Information</legend>
-        <div class="gorm-group ">
-            <label for="" class="form-label">Lead Status <span class="text-danger">*</span></label>
-            <input type="text" name="name" value="{{ old('lead_status') }}" autocomplete="off"
-                class="form-control input-sm" required placeholder="Enter Lead Status ..">
-        </div>
+      
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="" class="form-label">Lead Status Description <span
-                        class="text-secondary">(optional)</span></label>
-                <textarea class="form-control" placeholder="Enter Lead Description..." value="{{ old("description") }}" name="description"></textarea>
+                <label for="" class="form-label">Client Type <span
+                        class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter Client Type..." value="{{ old("client_type") }}" name="client_type">
             </div>
             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Status<span class="text-danger">*</span></label>
