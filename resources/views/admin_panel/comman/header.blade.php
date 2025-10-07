@@ -10,7 +10,7 @@
         var seconds = now.getSeconds();
         var ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
+        hours = hours ? hours : 12; 
         minutes = minutes < 10 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
@@ -82,6 +82,29 @@
                             </h6>
                             <span class="d-block tx-10 text-muted" style="line-height:1.2; margin-top:3px;">
                                 Streamlined invoicing and customer management for Quatation
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </a>
+        </div>
+
+
+
+<!-- Lead Managemnet Section Start Here-->
+   <div class="row m-0 p-0">
+            <a href="{{ route("leadmanagement") }}" class="col-lg-12 m-0 p-0 bd-1">
+                <ul>
+                    <li class="list-group-item d-flex align-items-center bd-0">
+                        <div class="mg-r-15 p-2 rounded-10 bg-light">
+                            <img src="{{ asset("assets/img/icons/leadmanagment.png")}}" class="wd-30">
+                        </div>
+                        <div>
+                            <h6 class="tx-14 tx-inverse font-weight-normal tx-semibold mg-b-0">
+                                Lead Management
+                            </h6>
+                            <span class="d-block tx-10 text-muted" style="line-height:1.2; margin-top:3px;">
+                               Client Lead management for Follow-ups
                             </span>
                         </div>
                     </li>

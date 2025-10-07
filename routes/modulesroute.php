@@ -5,6 +5,9 @@ use App\Http\Controllers\CustomerInvoice\PaymentsController;
 use App\Models\CustomerInvoice\CustomerRecordsModel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomerInvoice\IndexController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\LeadManagementController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\ImportClientsController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\LeadStatusController;
 
 
 Route::prefix('Admin/customer-billing')->group(function () {
@@ -51,4 +54,22 @@ Route::prefix('Admin/customer-billing/payments')->group(function () {
     Route::post('/record-payment', [PaymentsController::class, 'store'])->name('admin_panel.module.customerinvoice.payment.save');
 
 })->middleware(['auth', 'verified']);
+
+
+
+// Routes Starts For The Lead Management
+Route::prefix('Admin/LeadManagement/')->group(function () {
+    Route::get("index",[LeadManagementController::class,'index'])->name("leadmanagement");
+
+    Route::get('ImportClients',[ImportClientsController::class,'index'])->name("leadmanagement-client-imports");
+    Route::post('ImportClientsPreview',[ImportClientsController::class,'clientspreview'])->name("leadmanagement-client-imports-data-preview");
+
+
+
+    // Lead Status Controller Section Start Here
+    Route::get("LeadStatus",[LeadStatusController::class,'index'])->name("lead-statuss");
+    Route::post("CreateLeadStatus",[LeadStatusController::class,'store'])->name("create-lead-status");
+    Route::get("EditViewLeadStatus/{id}",[LeadStatusController::class,'edit'])->name("edit-lead-status");
+    Route::put("UpdateLeadStatus/{id}",[LeadStatusController::class,'update'])->name("update-lead-status");
+})->middleware(['auth', 'verified']);;
 ?>

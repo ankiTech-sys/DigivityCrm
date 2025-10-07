@@ -8,5 +8,5 @@
 @include('admin_panel.layouts.Models.AddModels') <!--add crud modal (popup)-->
 @include('admin_panel.layouts.Models.EditModels') <!--edit crud modal (popup)-->
 
-@include('admin_panel.comman.dashboardfooter');
+@include('admin_panel.comman.dashboardfooter')
 
