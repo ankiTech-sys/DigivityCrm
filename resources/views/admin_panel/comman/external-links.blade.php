@@ -65,6 +65,7 @@
     <!-- Include CKEditor 5 -->
     <script src="https://cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
 
+
     <!-- MDBootstrap CSS -->
  
 
@@ -83,7 +84,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/material_green.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 
-
+    <script src="{{ asset('../../assets/lib/chart/Chart.bundle.min.js')}}"></script>
+    <script src="{{ asset('../../assets/lib/chart/Chart.min.js')}}"></script>
+    <script src="{{ asset('../../assets/js/chart.js')}}"></script>
 
 <style>
     @keyframes rotateBottom {
@@ -156,16 +159,4 @@
 </head>
 
 <body>
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function() {
-    // Initialize Flatpickr
-    flatpickr(".datepicker", {
-        dateFormat: "d-m-Y",   // backend format
-        altInput: true,        // nice formatted display
-        altFormat: "d-m-Y",   // e.g., October 7, 2025
-        allowInput: true,      // user can type manually
-        defaultDate: "today",  // ✅ auto-select today's date
-        clickOpens: true       // ✅ opens picker when clicked
-    });
-});
-</script>
+

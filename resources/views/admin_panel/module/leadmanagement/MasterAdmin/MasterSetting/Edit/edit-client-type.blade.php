@@ -2,12 +2,17 @@
     @csrf
     @method('PUT')
     <fieldset class="form-fieldset m-3  px-3">
-      
+      <legend>Edit Client Type</legend>
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Client Type <span
                         class="text-danger">*</span></label>
                 <input type="text" class="form-control" placeholder="Enter Client Type..." value="{{ old("client_type", $clientType->client_type) }}" name="client_type">
+            </div>
+              <div class="col-sm-6 form-group">
+                <label for="" class="form-label">Slug <span
+                        class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="Enter Slug..." value="{{ old("slug", $clientType->slug) }}" name="slug">
             </div>
             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Status<span class="text-danger">*</span></label>

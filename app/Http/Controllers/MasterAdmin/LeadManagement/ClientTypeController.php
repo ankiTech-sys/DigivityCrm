@@ -13,7 +13,7 @@ class ClientTypeController extends Controller
 
     public function index()
     {
-        $clientTypes = (new LeadManagementRepository())->clienttype();
+        $clientTypes = (new LeadManagementRepository())->getclienttypes();
 
         return view("admin_panel.module.leadmanagement.MasterAdmin.MasterSetting.define-client-type",compact("clientTypes"));
 

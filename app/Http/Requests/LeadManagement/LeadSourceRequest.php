@@ -3,7 +3,8 @@
 namespace App\Http\Requests\LeadManagement;
 
 use Illuminate\Foundation\Http\FormRequest;
-class ClientTypeRequest extends FormRequest
+
+class LeadSourceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +22,8 @@ class ClientTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'client_type'=>'required',
-            "slug"=>['required'],
-            'status'=>['sometimes']
+            "lead_source_name"=>['required'],
+            "status"=>['required']
         ];
     }
 }

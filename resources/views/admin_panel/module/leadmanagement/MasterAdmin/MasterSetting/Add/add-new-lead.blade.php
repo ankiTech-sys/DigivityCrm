@@ -14,6 +14,14 @@
                 <textarea class="form-control" placeholder="Enter Lead Description..." value="{{ old("description") }}" name="description"></textarea>
             </div>
             <div class="col-sm-6 form-group">
+                <label for="" class="form-label">Default At<span class="text-danger">*</span></label>
+                <select class="form-select" name="default_at">
+                    <option value="yes">Selected</option>
+                    <option value="no">No-Selected</option>
+                </select>
+            </div>
+
+             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Status<span class="text-danger">*</span></label>
                 <select class="form-select" name="status">
                     <option value="yes">Active</option>

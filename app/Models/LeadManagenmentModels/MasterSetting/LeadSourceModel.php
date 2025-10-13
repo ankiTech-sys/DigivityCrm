@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Models\LeadManagenmentModels\MasterSetting;
+
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Record;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-class ClientTypeModel extends Record
+class LeadSourceModel extends Record
 {
-    use HasFactory, SoftDeletes;
+use HasFactory, SoftDeletes;
 
-    protected $table ='lead_management_client_types';
+    protected $table ='lead_source';
 
     protected $fillable = [
-        'client_type',
-        "slug",
+        'lead_source_name',
         'status',
         'user_id',
     ];

@@ -7,7 +7,7 @@
 @section('ModelTitleInfo', 'Manage Client Type')
 @section('EditModelTitle', 'Edit Client Type')
 @section('EditModelTitleInfo', 'Manage Client Type')
-@section('ModelSize', 'modal-md')
+@section('ModelSize', 'modal-lg')
 @section('AddModelPage')
     @include('admin_panel.module.leadmanagement.MasterAdmin.MasterSetting.Add.add-new-client-type')
 @endsection
@@ -42,6 +42,7 @@
                             <tr class="py-3">
                                 <th class="fw-bold">Sr. No.</th>
                                 <th class="fw-bold">Client Type</th>
+                                <th class="fw-bold">Slug</th>
                                 <th class="fw-bold text-center">Is-Active</th>
                                 <th class="fw-bold">Modifyed At</th>
                             </tr>
@@ -51,9 +52,16 @@
                                  <tr editUrl="{{ route('edit-client-type', $clientType->id) }}"
                                     deleteurl="{{ route('RecordDelete', ['id' => $clientType->id, 'table_name' => 'lead_management_client_types']) }}">
                                      <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $clientType->client_type }}</td>
-                                    <td class="text-center">{{ $clientType->status }}</td>
-                                    <td>{{ $clientType->updated_at }}</td>
+                                    <td>{{ $clientType->client_type ?? "" }}</td>
+                                    <td>{{ $clientType->slug ?? "" }}</td>
+                                   <td class="text-center">
+                                        @if ($clientType->status == 'yes')
+                                            <span class="badge bg-success">Active</span>
+                                        @else
+                                            <span class="badge bg-danger">Inactive</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ nowdate($clientType->updated_at,'d-m-Y')  ?? "" }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

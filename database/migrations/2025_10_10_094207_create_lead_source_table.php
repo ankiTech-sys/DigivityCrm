@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lead_clients', function (Blueprint $table) {
+        Schema::create('lead_source', function (Blueprint $table) {
             $table->id();
-            $table->string('company_name');
-            $table->string('email')->nullable();
-            $table->string('contact_no', 20)->nullable();
-            $table->string('address')->nullable();
-            $table->unsignedBigInteger("erp_company_id")->nullable();
-            $table->string("no_of_students")->nullable();
-            $table->unsignedBigInteger("client_type_id");
+            $table->string("lead_source_name");
             $table->enum('status', ['yes', 'no'])->default('yes');
             $table->softDeletes();
             $table->timestamps();
@@ -31,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lead_clients');
+        Schema::dropIfExists('lead_source');
     }
 };

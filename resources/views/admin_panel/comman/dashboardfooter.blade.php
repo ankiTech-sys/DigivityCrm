@@ -215,11 +215,11 @@ $(document).ready(function () {
 <script src="{{ asset('../../assets/lib/typeahead/typeahead.bundle.min.js')}}"></script>
 
 <script src="{{ asset('../../assets/js/custom.js') }}"></script>
-<script src="{{ asset('../../assets/js/chart.js')}}"></script>
 <script src="{{ asset('../../assets/js/datatable.js')}}"></script>
 <script src="{{ asset('../../assets/js/options.js')}}"></script>
 <script src="{{ asset('../../assets/js/search.js')}}"></script>
 <script src="{{asset('../../assets/jshelper/TableHelper.js')}}"></script>
+<script src="{{asset('../../assets/jshelper/customjquery.js')}}"></script>
 <script src="{{ asset('../../alertify/alertify.js')}}"></script>
 <script type='text/javascript'>
     $(document).ready(function () {

@@ -11,6 +11,9 @@ use App\Http\Controllers\MasterAdmin\LeadManagement\LeadStatusController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\CompanyController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\ClientRegistrationController;
 use App\Http\Controllers\MasterAdmin\LeadManagement\ClientTypeController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\LeadSourceController;
+use App\Http\Controllers\MasterAdmin\LeadManagement\LeadAssignedToController;
+
 
 
 Route::prefix('Admin/customer-billing')->group(function () {
@@ -88,6 +91,22 @@ Route::prefix('Admin/LeadManagement/')->group(function () {
     Route::post("CreateClientType",[ClientTypeController::class,'store'])->name("create-client-type");
     Route::get("EditViewClientType/{id}",[ClientTypeController::class,'edit'])->name("edit-client-type");
     Route::put("UpdateClientType/{id}",[ClientTypeController::class,'update'])->name("update-client-type");
+
+
+    // Lead Source Controller Routes
+    Route::get("LeadSource",[LeadSourceController::class,'index'])->name("define-leadSource-types");
+    Route::post("CreateLeadSource",[LeadSourceController::class,'store'])->name("create-leadSource-type");
+    Route::get("EditViewLeadSource/{id}",[LeadSourceController::class,'edit'])->name("edit-leadSource-type");
+    Route::put("UpdateLeadSource/{id}",[LeadSourceController::class,'update'])->name("update-leadSource-type");
+
+    
+
+        // Lead Assignee Controller Routes
+    Route::get("LeadAssignee",[LeadAssignedToController::class,'index'])->name("define-leadAssignee");
+    Route::post("CreateLeadAssignee",[LeadAssignedToController::class,'store'])->name("create-leadAssignee");
+    Route::get("EditViewLeadAssignee/{id}",[LeadAssignedToController::class,'edit'])->name("edit-leadAssignee");
+    Route::put("UpdateLeadAssignee/{id}",[LeadAssignedToController::class,'update'])->name("update-leadAssignee");
+
 
 
     // Lead Management Client Registration Section Start Here

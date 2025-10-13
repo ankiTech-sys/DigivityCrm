@@ -17,6 +17,20 @@
         document.getElementById('clock').innerHTML = strTime;
     }
     </script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+             // Initialize Flatpickr
+                flatpickr(".datepicker", {
+                 dateFormat: "d-m-Y",   // backend format
+        altInput: true,        // nice formatted display
+        altFormat: "d-m-Y",   // e.g., October 7, 2025
+        allowInput: true,      // user can type manually
+        defaultDate: "today",  // ✅ auto-select today's date
+        clickOpens: true       // ✅ opens picker when clicked
+    });
+});
+</script>
 @php
     if (Auth::user() === null) {
         header("Location: " . route('login'));

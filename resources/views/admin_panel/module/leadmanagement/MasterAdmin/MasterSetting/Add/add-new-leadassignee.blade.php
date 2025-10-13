@@ -1,18 +1,20 @@
-<form action="{{ route('create-client-type') }}" method="POST">
+<form action="{{ route('create-leadAssignee') }}" method="POST">
     @csrf
     <fieldset class="form-fieldset m-3  px-3">
-      <legend>Add New Client Type</legend>
+        <legend>Information</legend>
         <div class="row">
             <div class="col-sm-6 form-group">
-                <label for="" class="form-label">Client Type <span
-                        class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter Client Type..." value="{{ old("client_type") }}" name="client_type">
+                <label for="" class="form-label">Lead Assignee Name <span class="text-danger">*</span></label>
+                <input type="text" name="lead_assignee_name" value="{{ old('lead_assignee_name') }}" autocomplete="off"
+                    class="form-control input-sm" required placeholder="Enter Lead Assignee Name ..">
             </div>
-             <div class="col-sm-6 form-group">
-                <label for="" class="form-label">Slug <span
-                        class="text-danger">*</span></label>
-                <input type="text" class="form-control" placeholder="Enter Slug..." value="{{ old("slug") }}" name="slug">
+
+            <div class="col-sm-6 form-group">
+                <label for="" class="form-label">Contact No. <span class="text-muted">(optional)</span></label>
+                <input type="text" name="contact_no" value="{{ old('contact_no') }}" autocomplete="off"
+                    class="form-control input-sm" placeholder="Enter Contact No. ..">
             </div>
+
             <div class="col-sm-6 form-group">
                 <label for="" class="form-label">Status<span class="text-danger">*</span></label>
                 <select class="form-select" name="status">

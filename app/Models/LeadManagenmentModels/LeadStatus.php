@@ -15,7 +15,7 @@ class LeadStatus extends Record
         'name',
         'description',
         'status',
-        'created_by',
-        'updated_by',
+        "default_at",
+        'user_id',
     ];
 }

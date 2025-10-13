@@ -3312,8 +3312,8 @@ BUGS:
         width: 100%;
         padding: 0.46875rem 0.625rem;
         -moz-padding-start: calc(0.625rem - 3px);
-        font-size: 0.875rem;
-        font-weight: 400;
+        font-size: 14px;
+        font font-weight: 400;
         line-height: 1;
         max-height: 300px;
         color: #001737;
@@ -60399,5 +60399,5 @@ BUGS:
     }
     
      ::placeholder {
-        font-size: 10px !important;
+        font-size: 12px !important;
     }

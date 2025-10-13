@@ -24,6 +24,8 @@
             <a href="{{ route('lead-statuss') }}" class="dropdown-item">Define Lead Stages</a>
             <a href="{{ route('define-companys') }}" class="dropdown-item">Define Company</a>
             <a href="{{ route('define-client-types') }}" class="dropdown-item">Client Type</a>
+            <a href="{{ route('define-leadSource-types') }}" class="dropdown-item">Define Lead Source</a>
+            <a href="{{ route('define-leadAssignee') }}" class="dropdown-item">Define Lead Assignee</a>
         </div>
     </li>
 </ul>

@@ -9,7 +9,9 @@ class ClientRegistrationController extends Controller{
     public function index(){
 
         $erpcompanies = (new LeadManagementRepository())->geterpcompanies();
-        return view("admin_panel.module.leadmanagement.MasterAdmin.Clients.ClientRegistration", compact('erpcompanies'));
+        $clienttypes = (new LeadManagementRepository())->getclienttypes();
+        $clientstatuses = (new LeadManagementRepository())->leadstatus();
+        return view("admin_panel.module.leadmanagement.MasterAdmin.Clients.ClientRegistration", compact('erpcompanies','clienttypes','clientstatuses'));
     }
 
     public function store(Request $request){

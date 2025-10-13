@@ -24,7 +24,8 @@ class LeadStatusRequest extends FormRequest
         return [
             "name"=>["required"],
             "description"=>['sometimes'],
-            "status"=>["required"]
+            "status"=>["required"],
+            "default_at"=>['required']
         ];
     }
 }

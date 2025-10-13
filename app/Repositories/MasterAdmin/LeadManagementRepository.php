@@ -5,7 +5,8 @@ namespace App\Repositories\MasterAdmin;
 use App\Models\LeadManagenmentModels\LeadStatus;
 use App\Models\LeadManagenmentModels\ErpCompanyModel;
 use App\Models\LeadManagenmentModels\MasterSetting\ClientTypeModel;
-
+use App\Models\LeadManagenmentModels\MasterSetting\LeadSourceModel;
+use App\Models\LeadManagenmentModels\MasterSetting\LeadAssigneeModel;
 use App\Repositories\RepositoryContract;
 
 class LeadManagementRepository extends RepositoryContract
@@ -27,12 +28,28 @@ class LeadManagementRepository extends RepositoryContract
             return ErpCompanyModel::record()->get();
         }
     }
-    public function clienttype($search = null)
+    public function getclienttypes($search = null)
     {
         if ($search != null) {
             return ClientTypeModel::record()->where($search)->get();
         } else {
             return ClientTypeModel::record()->get();
+        }
+    }
+
+    public function leadSources($search = null){
+           if ($search != null) {
+            return LeadSourceModel::record()->where($search)->get();
+        } else {
+            return LeadSourceModel::record()->get();
+        }
+    }
+
+    public function leadAssignees($search = null){
+        if ($search != null) {
+            return LeadAssigneeModel::record()->where($search)->get();
+        } else {
+            return LeadAssigneeModel::record()->get();
         }
     }
 }

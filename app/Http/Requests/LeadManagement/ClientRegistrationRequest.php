@@ -22,12 +22,17 @@ class SchoolRegistrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "school_name"=>['required'],
-            "school_email"=>["sometimes"],
-            "school_contact_no"=>["required"],
+            "client_type_id"=>['required'],
+            "client_name"=>['required'],
+            "company_name"=>['sometimes'],
+            "email"=>["sometimes"],
+            "contact_no"=>["required"],
+            "address"=>['sometimes'],
+            "erp_company_id"=>["sometimes"],
+            "lead_source_id"=>['required'],
             "no_of_students"=>['sometimes'],
             "reg_date"=>['sometimes'],
-            "erp_system"=>['sometimes']
+            "erp_system"=>['sometimes'],
         ];
     }
 }
